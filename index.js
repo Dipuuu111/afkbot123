@@ -68,6 +68,15 @@ bot.on('spawn',function() {
     connected=1;
 });
 
+bot.on("move", ()=>{
+    let friend = bot.nearestEntity();
+
+    if (friend) {
+        bot.lookAt(friend.position.offset(0, friend.height, 0));
+	bot.setControlState("forward", walking);
+    }
+});
+
 bot.on('death',function() {
     bot.emit("respawn")
 });
