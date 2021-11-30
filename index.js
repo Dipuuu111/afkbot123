@@ -1,5 +1,6 @@
 const mineflayer = require('mineflayer')
 const cmd = require('mineflayer-cmd').plugin
+const mother = require('./mineflayer-mother.js').mother;
 const fs = require('fs');
 let rawdata = fs.readFileSync('config.json');
 let data = JSON.parse(rawdata);
@@ -74,28 +75,13 @@ bot.on('death',function() {
     bot.emit("respawn")
 });
 
-function bindEvents(bot) {
+bot.loadPlugin(mother);
 
-    bot.on('error', function(err) {
-        console.log('Error attempting to reconnect: ' + err.errno + '.');
-        if (err.code == undefined) {
-            console.log('Invalid credentials OR bot needs to wait because it relogged too quickly.');
-            console.log('Will retry to connect in 30 seconds. ');
-            setTimeout(relog, 30000);
-        }
-    });
+bot.on('mother-beginMLG', ()=>{
+	bot.chat("Oh no!");
+});
 
-    bot.on('end', function() {
-        console.log("Bot has ended");
-        // If set less than 30s you will get an invalid credentials error, which we handle above.
-        setTimeout(relog, 30000);  
-    });
-}
+bot.on('mother-endMLG', ()=>{
+	bot.chat("Anyway...");
+});
 
-function relog() {
-    console.log("Attempting to reconnect...");
-    bot = mineflayer.createBot(options);
-    bindEvents(bot);
-}
-
-bindEvents(bot);
