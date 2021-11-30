@@ -15,10 +15,10 @@ var maxrandom = 10; // 0-5 seconds added to movement interval (randomly)
 var host = data["ip"];
 var username = data["name"]
 var nightskip = data["auto-night-skip"]
-var bot = mineflayer.createBot({
-  host: host,
-  username: username
-});
+var options = {host: host,
+  		username: username,
+};
+var bot = mineflayer.createBot(options);
 bindEvents(bot);
 function getRandomArbitrary(min, max) {
        return Math.random() * (max - min) + min;
