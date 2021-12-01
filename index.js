@@ -116,10 +116,6 @@ bot.on("move", ()=>{
     if (friend) {
         bot.lookAt(friend.position.offset(0, friend.height, 0));
     }
-	
-    if (entity != bot.entity) return;
-    walking = !walking;
-    bot.setControlState("forward", walking);
+
 });
 
-var walking = false;
