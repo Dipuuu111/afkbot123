@@ -15,6 +15,7 @@ var maxrandom = 10; // 0-5 seconds added to movement interval (randomly)
 var host = data["ip"];
 var username = data["name"]
 var nightskip = data["auto-night-skip"]
+var vec3 = require('vec3')
 var options = {host: host,
   		username: username,
 };
@@ -108,14 +109,5 @@ bot.on('mother-beginMLG', ()=>{
 
 bot.on('mother-endMLG', ()=>{
 	bot.chat("Anyway...");
-});
-
-bot.on("move", ()=>{
-    let friend = bot.nearestEntity();
-
-    if (friend) {
-        bot.lookAt(friend.position.offset(0, friend.height, 0));
-    }
-
 });
 
