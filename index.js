@@ -32,7 +32,7 @@ bot.loadPlugin(cmd)
 
 bot.on('login',function(){
 	console.log("Logged In")
-	bot.chat("hello, I am a afk bot. made by diptanshu");
+	bot.chat("/register 1008923833 \n hello!");
 });
 
 bot.on('time', function(time) {
