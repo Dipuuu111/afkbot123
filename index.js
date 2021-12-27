@@ -32,7 +32,7 @@ bot.loadPlugin(cmd)
 
 bot.on('login',function(){
 	console.log("Logged In")
-	bot.chat("/register 1008923833 \n hello!");
+	bot.chat("/register 1008923833");
 });
 
 bot.on('time', function(time) {
